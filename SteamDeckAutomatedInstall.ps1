@@ -13,67 +13,70 @@ Clear
 
 $ProgressPreference = 'SilentlyContinue'
 
+#create .net webclient for faster downloading
+$webclient = New-Object System.Net.WebClient
+
 Write-Host "Downloading Required Files"
 Write-Host "-----------------------------------------------------------------------"
 
 Write-Host -NoNewline "- APU Chipset Drivers from Valve: "
-Invoke-WebRequest -URI "https://steamdeck-packages.steamos.cloud/misc/windows/drivers/Aerith%20Windows%20Driver_2302270303.zip" -OutFile ".\APU_Drivers.zip"
+$webclient.DownloadFile("https://steamdeck-packages.steamos.cloud/misc/windows/drivers/Aerith%20Windows%20Driver_2302270303.zip", ".\APU_Drivers.zip")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Audio Drivers 1/2 from Valve (cs35l41): "
-Invoke-WebRequest -URI "https://steamdeck-packages.steamos.cloud/misc/windows/drivers/cs35l41-V1.2.1.0.zip" -OutFile ".\Audio_Drivers_1.zip"
+$webclient.DownloadFile("https://steamdeck-packages.steamos.cloud/misc/windows/drivers/cs35l41-V1.2.1.0.zip", ".\Audio_Drivers_1.zip")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Audio Drivers 2/2 from Valve (NAU88L21): "
-Invoke-WebRequest -URI "https://steamdeck-packages.steamos.cloud/misc/windows/drivers/NAU88L21_x64_1.0.6.0_WHQL%20-%20DUA_BIQ_WHQL.zip" -OutFile ".\Audio_Drivers_2.zip"
+$webclient.DownloadFile("https://steamdeck-packages.steamos.cloud/misc/windows/drivers/NAU88L21_x64_1.0.6.0_WHQL%20-%20DUA_BIQ_WHQL.zip", ".\Audio_Drivers_2.zip")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Wireless LAN Drivers from Windows Update: "
-Invoke-WebRequest -URI "https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2022/11/05b73312-01e0-4e40-a991-93d11309b736_8cd43d4695c27a3f174b6e9c33034c100995e095.cab" -OutFile ".\WLAN_Drivers.cab"
+$webclient.DownloadFile("https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2022/11/05b73312-01e0-4e40-a991-93d11309b736_8cd43d4695c27a3f174b6e9c33034c100995e095.cab", ".\WLAN_Drivers.cab")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Bluetooth Drivers from Windows Update: "
-Invoke-WebRequest -URI "https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2022/08/ad501382-9e48-4720-92c7-bcee5374671e_501f5f234304610bbbc221823de181e544c1bc09.cab" -OutFile ".\Bluetooth_Drivers.cab"
+$webclient.DownloadFile("https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2022/08/ad501382-9e48-4720-92c7-bcee5374671e_501f5f234304610bbbc221823de181e544c1bc09.cab", ".\Bluetooth_Drivers.cab")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- MicroSD Card Reader Drivers from Windows Update: "
-Invoke-WebRequest -URI "https://catalog.s.download.windowsupdate.com/c/msdownload/update/driver/drvs/2022/10/4f20ec00-bee5-4df2-873c-3a49cf4d4f8b_0aaf931a756473e6f8be1ef890fb60c283e9e82e.cab" -OutFile ".\MicroSD_Drivers.cab"
+$webclient.DownloadFile("https://catalog.s.download.windowsupdate.com/c/msdownload/update/driver/drvs/2022/10/4f20ec00-bee5-4df2-873c-3a49cf4d4f8b_0aaf931a756473e6f8be1ef890fb60c283e9e82e.cab", ".\MicroSD_Drivers.cab")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- VC++ All in One Redistributable: "
-Invoke-WebRequest -URI "https://github.com/abbodi1406/vcredist/releases/download/v0.70.0/VisualCppRedist_AIO_x86_x64_70.zip" -OutFile ".\VCpp.zip"
+$webclient.DownloadFile("https://github.com/abbodi1406/vcredist/releases/download/v0.70.0/VisualCppRedist_AIO_x86_x64_70.zip", ".\VCpp.zip")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- DirectX Web Setup: "
-Invoke-WebRequest -URI "https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe" -OutFile ".\DirectX.exe"
+$webclient.DownloadFile("https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe", ".\DirectX.exe")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- .NET 6.0 Setup: "
-Invoke-WebRequest -URI "https://download.visualstudio.microsoft.com/download/pr/38dca5f5-f10f-49fb-b07f-a42dd123ea30/335bb4811c9636b3a4687757f9234db9/dotnet-sdk-6.0.407-win-x64.exe" -OutFile ".\dotnet6.0_Setup.exe"
+$webclient.DownloadFile("https://download.visualstudio.microsoft.com/download/pr/38dca5f5-f10f-49fb-b07f-a42dd123ea30/335bb4811c9636b3a4687757f9234db9/dotnet-sdk-6.0.407-win-x64.exe", ".\dotnet6.0_Setup.exe")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- ViGEmBus Setup: "
-Invoke-WebRequest -URI "https://github.com/ViGEm/ViGEmBus/releases/download/v1.21.442.0/ViGEmBus_1.21.442_x64_x86_arm64.exe" -OutFile ".\ViGEmBus_Setup.exe"
+$webclient.DownloadFile("https://github.com/ViGEm/ViGEmBus/releases/download/v1.21.442.0/ViGEmBus_1.21.442_x64_x86_arm64.exe", ".\ViGEmBus_Setup.exe")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- RivaTuner Setup: "
-Invoke-WebRequest -URI "https://www.filecroco.com/download-file/download-rivatuner-statistics-server/14914/2360/" -OutFile ".\RivaTuner_Setup.exe"
+$webclient.DownloadFile("https://www.filecroco.com/download-file/download-rivatuner-statistics-server/14914/2360/", ".\RivaTuner_Setup.exe")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- SteamDeckTools: "
-Invoke-WebRequest -URI "https://github.com/ayufan/steam-deck-tools/releases/download/0.6.14/SteamDeckTools-0.6.14-portable.zip" -OutFile ".\SteamDeckTools.zip"
+$webclient.DownloadFile("https://github.com/ayufan/steam-deck-tools/releases/download/0.6.14/SteamDeckTools-0.6.14-portable.zip", ".\SteamDeckTools.zip")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- EqualizerAPO: "
-Invoke-WebRequest -UserAgent "Wget" -URI "https://sourceforge.net/projects/equalizerapo/files/latest/download" -OutFile ".\EqualizerAPO_Setup.exe"
+$webclient.DownloadFile("https://sourceforge.net/projects/equalizerapo/files/latest/download", ".\EqualizerAPO_Setup.exe")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- EqualizerAPO Config: "
-Invoke-WebRequest -UserAgent "Wget" -URI "https://raw.githubusercontent.com/CelesteHeartsong/SteamDeckAutomatedInstall/main/EqualizerAPO_Config.txt" -OutFile ".\EqualizerAPO_Config.txt"
+$webclient.DownloadFile("https://raw.githubusercontent.com/CelesteHeartsong/SteamDeckAutomatedInstall/main/EqualizerAPO_Config.txt", ".\EqualizerAPO_Config.txt")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- EqualizerAPO VST Plugin: "
-Invoke-WebRequest -UserAgent "Wget" -URI "https://github.com/werman/noise-suppression-for-voice/releases/download/v1.03/win-rnnoise.zip" -OutFile ".\win-rnnoise.zip"
+$webclient.DownloadFile("https://github.com/werman/noise-suppression-for-voice/releases/download/v1.03/win-rnnoise.zip", ".\win-rnnoise.zip")
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host "-----------------------------------------------------------------------"
